@@ -8,13 +8,15 @@ This is my solution to HW1.
 
 ```{r}
 library(tidyverse)
+library(palmerpenguins)
+library(ggplot2)
 ```
 
 ## Problem 1
 
 Create a data frame with specified elements.
 
-```{r}
+```{r create data frame}
 prob1_df = 
   tibble(
     samp = rnorm(10),
@@ -26,7 +28,7 @@ prob1_df =
 
 Take the mean of each variable in my data frame.
 
-```{r}
+```{r get the mean}
 mean(pull(prob1_df, samp))
 mean(pull(prob1_df, samp_gt_0))
 mean(pull(prob1_df, char_vec))
@@ -34,3 +36,39 @@ mean(pull(prob1_df, factor_vec))
 ```
 
 ## Problem 2
+
+Open the penguins dataset.
+
+```{r penguins}
+data("penguins", package = "palmerpenguins")
+```
+
+The variables in the dataset includes:
+
+```{r variables}
+colnames(penguins)
+```
+
+The important value that I pick is the species.
+
+```{r species}
+penguins[1]
+```
+
+```{r col row}
+ncol(penguins)
+nrow(penguins)
+```
+
+The dataset contains 8 columns and 344 rows.
+
+The mean flipper length is 
+```{r flipper mean}
+mean(pull(penguins,flipper_length_mm),na.rm = TRUE)
+```
+
+```{r scatter}
+ggplot(data = penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species))+
+  geom_point()
+```
+
