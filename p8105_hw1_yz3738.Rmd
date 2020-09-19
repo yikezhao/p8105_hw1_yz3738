@@ -6,3 +6,31 @@ output: github_document
 
 This is my solution to HW1.
 
+```{r}
+library(tidyverse)
+```
+
+## Problem 1
+
+Create a data frame with specified elements.
+
+```{r}
+prob1_df = 
+  tibble(
+    samp = rnorm(10),
+    samp_gt_0 = samp > 0,
+    char_vec = c("a","b","c","d","e","f","g","h","i","j"),
+    factor_vec = factor(c("low","mod","high","low","mod","high","low","mod","high","high"))
+  )
+```
+
+Take the mean of each variable in my data frame.
+
+```{r}
+mean(pull(prob1_df, samp))
+mean(pull(prob1_df, samp_gt_0))
+mean(pull(prob1_df, char_vec))
+mean(pull(prob1_df, factor_vec))
+```
+
+## Problem 2
