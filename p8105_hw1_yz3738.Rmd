@@ -72,3 +72,8 @@ ggplot(data = penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = s
   geom_point()
 ```
 
+Export the scatterplot just made.
+```{r ggsave}
+ggsave("penguins.pdf")
+```
+
